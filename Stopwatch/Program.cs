@@ -32,7 +32,19 @@ namespace Stopwatch {
                 multi = 3600;
             }
 
-            Start(tempo * multi);
+            PreStart(tempo * multi);
+        }
+
+        static void PreStart(int tempo) {
+            Console.Clear();
+            Console.WriteLine("Preparar...");
+            Thread.Sleep(1000);
+            Console.WriteLine("Apontar...");
+            Thread.Sleep(1000);
+            Console.WriteLine("Vai!!!");
+            Thread.Sleep(1000);
+
+            Start(tempo);
         }
 
         static void Start(int tempo) {
