@@ -16,14 +16,29 @@ namespace Stopwatch {
             Console.WriteLine("Quanto tempo deseja contar? ");
 
             string opcao = Console.ReadLine().ToLower();
+
+            if (opcao == "0") {
+                System.Environment.Exit(0);
+            }
+
             char tipo = char.Parse(opcao.Substring(opcao.Length - 1, 1));
-            int time = int.Parse(opcao.Substring(0, opcao.Length - 1));
+            int tempo = int.Parse(opcao.Substring(0, opcao.Length - 1));
+
+            int multi = 1;
+
+            if (tipo == 'm') {
+                multi = 60;
+            } else if (tipo == 'h') {
+                multi = 3600;
+            }
+
+            Start(tempo * multi);
         }
 
-        static void Start(int time) {
+        static void Start(int tempo) {
             int currentTime = 0;
             
-            while(currentTime != time) {
+            while(currentTime != tempo) {
                 Console.Clear();
                 currentTime++;
                 Console.Write(currentTime);
@@ -33,6 +48,7 @@ namespace Stopwatch {
             Console.Clear();
             Console.WriteLine("Stopwatch finalizado...");
             Thread.Sleep(2500);
+            Menu();
         }
     }
 }
